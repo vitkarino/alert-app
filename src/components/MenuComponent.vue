@@ -1,0 +1,60 @@
+import SwitchToggleComponent from './SwitchToggleComponent.vue';
+<template>
+  <div class="menu-container">
+    <p>Selected region:</p>
+    <div class="region-menu">
+      <p class="region-name">KYIV OBLAST</p>
+      <p class="change-region">Change region</p>
+    </div>
+    <div class="notify-option">
+      <SwitchToggleComponent />
+      <p>Notify me of air raid alerts in my region</p>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.menu-container {
+  line-height: 30px;
+  padding: 50px;
+  position: fixed;
+  bottom: 0;
+
+  .region-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .region-name {
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .change-region {
+      opacity: 0.5;
+      cursor: pointer;
+      transition: 0.1s all;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .notify-option {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 0;
+    gap: 10px;
+  }
+}
+</style>
+
+<script>
+import SwitchToggleComponent from './SwitchToggleComponent.vue'
+export default {
+  name: 'App',
+  components: {
+    SwitchToggleComponent
+  }
+}
+</script>
