@@ -8,7 +8,10 @@ import SwitchToggleComponent from './SwitchToggleComponent.vue';
     </div>
     <div class="notify-option">
       <SwitchToggleComponent />
-      <p>Notify me of air raid alerts in my region</p>
+      <div class="option-text">
+        <p class="option-title">Enable notifications</p>
+        <p class="option-description">Notifies about air raid alerts in selected region.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +48,16 @@ import SwitchToggleComponent from './SwitchToggleComponent.vue';
     align-items: center;
     margin: 10px 0 0 0;
     gap: 10px;
+
+    .option-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 25px;
+    }
+
+    .option-title {
+      font-size: 22px;
+    }
   }
 }
 </style>

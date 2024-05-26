@@ -27,7 +27,7 @@ body {
   overflow: hidden;
 }
 .background {
-  background: linear-gradient(329deg, rgba(255, 215, 0, 1) 0%, rgba(0, 87, 183, 1) 100%);
+  background: linear-gradient(329deg, rgba(255, 215, 0, 0.3) 0%, rgba(0, 87, 183, 0.4) 100%);
   z-index: -2;
   filter: blur(100px);
   width: 120%;
@@ -40,6 +40,7 @@ body {
 
 .background-noise {
   position: absolute;
+  opacity: 0.4;
   width: 100%;
   height: 100vh;
   z-index: -1;

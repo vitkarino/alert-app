@@ -61,15 +61,15 @@ header {
   gap: 10px;
 
   button {
-    background-color: rgba($color: white, $alpha: 0.3);
+    background-color: rgba($color: white, $alpha: 0.4);
     display: flex;
 
     &:hover {
-      background-color: rgba($color: white, $alpha: 0.5);
+      background-color: rgba($color: white, $alpha: 0.6);
     }
 
     &:active {
-      background-color: rgba($color: white, $alpha: 0.7);
+      background-color: rgba($color: white, $alpha: 1);
     }
   }
 }
