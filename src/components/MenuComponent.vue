@@ -1,7 +1,7 @@
 import SwitchToggleComponent from './SwitchToggleComponent.vue';
 <template>
   <div class="menu-container">
-    <p>Selected region:</p>
+    <p class="selected-region">Selected region:</p>
     <div class="region-menu">
       <p class="region-name">KYIV OBLAST</p>
       <p class="change-region">Change region</p>
@@ -22,6 +22,10 @@ import SwitchToggleComponent from './SwitchToggleComponent.vue';
   padding: 50px;
   position: fixed;
   bottom: 0;
+  
+  .selected-region {
+    opacity: 0.5;
+  }
 
   .region-menu {
     display: flex;
@@ -53,10 +57,12 @@ import SwitchToggleComponent from './SwitchToggleComponent.vue';
       display: flex;
       flex-direction: column;
       line-height: 25px;
-    }
-
-    .option-title {
-      font-size: 22px;
+      .option-title {
+        font-size: 22px;
+      }
+      .option-description {
+        opacity: 0.5;
+      }
     }
   }
 }
