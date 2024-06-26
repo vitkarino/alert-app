@@ -28,3 +28,10 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# app ignores
+app/node_modules/
+app/dist/
+
+# Backend ignores
+api/node_modules/

@@ -1,4 +1,3 @@
-import SwitchToggleComponent from './SwitchToggleComponent.vue';
 <template>
   <div class="menu-container">
     <p class="selected-region">Selected region:</p>
