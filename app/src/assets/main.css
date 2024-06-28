@@ -15,7 +15,7 @@ button {
   outline: none;
   padding: 0.5em;
   border-radius: 50%;
-  transition: 0.1s all;
+  transition: 0.2s all;
 }
 
 .icon {

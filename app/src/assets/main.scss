@@ -9,19 +9,3 @@
 body {
     font-family: "Poppins", sans-serif;
 }
-
-button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    padding: 0.5em;
-    border-radius: 50%;
-    transition: 0.1s all;
-}
-
-.icon {
-    width: 24px;
-    height: 24px;
-    user-select: none;
-    pointer-events: none;
-}

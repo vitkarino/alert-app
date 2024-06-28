@@ -1,63 +1,66 @@
 <template>
   <div class="map-container">
-    <object type="image/svg+xml" data="/src/assets/ukraine-map.svg" ref="map" onload="fetchAndUpdateMap()"></object>
+    <object
+      type="image/svg+xml"
+      data="/src/assets/ukraine-map.svg"
+      ref="map"
+      class="map"
+      onload="fetchAndUpdateMap()"
+    ></object>
   </div>
 </template>
 
 <script>
 export default {
   mounted() {
-    this.fetchAndUpdateMap();
-    this.intervalId = setInterval(this.fetchAndUpdateMap, 10000);
-    this.logRemainingTime();
+    this.fetchAndUpdateMap()
+    this.intervalId = setInterval(this.fetchAndUpdateMap, 10000)
   },
   beforeUnmount() {
-    clearInterval(this.intervalId); 
-    clearInterval(this.logIntervalId);
+    clearInterval(this.intervalId)
+    clearInterval(this.logIntervalId)
   },
   methods: {
     fetchAndUpdateMap() {
       fetch('http://localhost:3000/api/alerts')
         .then((response) => {
           if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
+            throw new Error('Network response was not ok: ' + response.statusText)
           }
-          return response.json();
+          return response.json()
         })
         .then((data) => {
-          this.highlightRegions(data);
+          this.updateTimeLog();
+          this.highlightRegions(data)
         })
-        .catch((error) => console.error('Error:', error));
+        .catch((error) => console.error('Error:', error))
     },
     highlightRegions(data) {
-      const map = this.$refs.map.contentDocument;
+      const map = this.$refs.map.contentDocument
       if (!map) {
-        console.error('SVG map not found.');
-        return;
+        console.error('SVG map not found.')
+        return
       }
 
-      const paths = map.getElementsByTagName('path');
+      const paths = map.getElementsByTagName('path')
       for (let path of paths) {
-        path.style.fill = ''; 
+        path.style.fill = ''
       }
 
-      data.forEach(alert => {
-        const regionId = alert.regionId;
-        const path = map.getElementById(regionId);
+      data.forEach((alert) => {
+        const regionId = alert.regionId
+        const path = map.getElementById(regionId)
         if (path) {
-          path.style.fill = '#ff7a7a';
+          path.style.fill = '#ff7a7a'
         }
-      });
+      })
     },
-    logRemainingTime() {
-      let remainingTime = 10;
-      this.logIntervalId = setInterval(() => {
-        remainingTime--;
-        console.log(`Time remaining until next fetch: ${remainingTime} seconds`);
-        if (remainingTime === 0) {
-          remainingTime = 10; 
-        }
-      }, 1000);
+    updateTimeLog() {
+      const updatedElement = document.querySelector('.updated .updated-text');
+      const currentTime = new Date().toLocaleString();
+      if (updatedElement) {
+        updatedElement.textContent = `Updated: ${currentTime}`;
+      }
     }
   }
 }
@@ -74,10 +77,18 @@ export default {
   max-width: 100%;
   max-height: 90%;
 
+  // Dark theme
   .map {
     width: 95vw;
     height: auto;
-    filter: invert(0%) saturate(40%) brightness(1.2);
+    filter: invert(100%) saturate(40%);
   }
+
+  // Light theme
+  // .map {
+  //   width: 95vw;
+  //   height: auto;
+  //   filter: invert(0%) saturate(40%) brightness(1.2);
+  // }
 }
 </style>

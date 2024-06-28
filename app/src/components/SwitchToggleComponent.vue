@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <label class="switch">
-      <input type="checkbox" @click="toggleCheckbox" />
+      <input type="checkbox" v-model="checkbox" />
       <div class="slider round"></div>
     </label>
   </div>
@@ -13,6 +13,7 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+  cursor: pointer;
 
   input {
     opacity: 0;
@@ -22,13 +23,12 @@
 
   .slider {
     position: absolute;
-    cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(151, 151, 151, 0.4);
-    transition: 0.4s;
+    transition: 0.2s;
 
     &:before {
       position: absolute;
@@ -38,7 +38,7 @@
       left: 4px;
       bottom: 4px;
       background-color: white;
-      transition: 0.4s;
+      transition: 0.2s;
     }
 
     &.round {
@@ -51,7 +51,7 @@
   }
 
   input:checked + .slider {
-    background-color: rgba(114, 196, 114, 1);
+    background-color: rgba(114, 196, 114, 0.7);
   }
 
   input:checked + .slider:before {
@@ -66,11 +66,17 @@ import { ref } from 'vue'
 export default {
   setup() {
     const checkbox = ref(false)
+
     const toggleCheckbox = () => {
       checkbox.value = !checkbox.value
     }
 
     return { toggleCheckbox, checkbox }
+  },
+  methods: {
+    toggle() {
+      this.checkbox = !this.checkbox
+    }
   }
 }
 </script>

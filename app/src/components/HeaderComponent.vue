@@ -1,13 +1,15 @@
 <template>
   <header>
-    <span class="logo"
-      ><img class="icon" src="/src/assets/icons/ua-flag.png" alt="" />Alertify</span
-    >
+    <span class="logo">
+      <img class="icon" src="/src/assets/icons/ua-flag.png" alt="" />AirSignal
+      <span class="updated">
+        <span class="updated-text"></span>
+      </span>
+    </span>
     <span class="nav-buttons">
       <a href="https://github.com/vitkarino" target="”_blank”"
         ><button><img class="icon" src="/src/assets/icons/github.svg" alt="" /></button
       ></a>
-
       <button @click="changeLanguage">
         <img class="icon" :src="currentLanguage.src" alt="" />
       </button>
@@ -40,6 +42,7 @@ export default {
 }
 </script>
 
+//Dark theme
 <style lang="scss" scoped>
 header {
   display: flex;
@@ -51,21 +54,85 @@ header {
   font-size: 24px;
   display: flex;
   align-items: center;
-  font-weight: 800;
+  font-weight: bolder;
   gap: 5px;
-  pointer-events: none;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 4;
+  cursor: default;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    padding: 30px;
+    left: 0;
+    right: 0;
+  }
+
+  &:hover .updated {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+
+  .updated {
+    opacity: 0;
+    font-size: 15px;
+    transition: all 0.2s;
+    transform: translateX(0px);
+    font-weight: 400;
+  }
 }
 
 .nav-buttons {
   display: flex;
   gap: 10px;
+  z-index: 3;
+
+  button {
+    background-color: rgba($color: white, $alpha: 0.05);
+    display: flex;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background-color: rgba($color: white, $alpha: 0.1);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: rgba($color: white, $alpha: 0.2);
+    }
+  }
+}
+</style>
+
+// Light theme
+<!-- <style lang="scss" scoped>
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+}
+.logo {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  gap: 5px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  z-index: 3;
 
   button {
     background-color: rgba($color: white, $alpha: 0.4);
     display: flex;
 
     &:hover {
-      background-color: rgba($color: white, $alpha: 0.6);
+      background-color: rgba($color: white, $alpha: 0.7);
+      cursor: pointer;
     }
 
     &:active {
@@ -73,4 +140,4 @@ header {
     }
   }
 }
-</style>
+</style> -->
